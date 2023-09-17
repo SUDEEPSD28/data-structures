@@ -19,3 +19,5 @@ struct _maxmin_
 Array_dyn* initialize_array(int size);
 int insert_data(Array_dyn*,int data);
 int search_data(Array_dyn*,int element);
+Array_dyn * intersection(Array_dyn *arr_a, Array_dyn *arr_b);
+Array_dyn * deallocate(Array_dyn *dynarr);
