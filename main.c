@@ -1,32 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<assert.h>
-#include"array.h"
-
+#include "darray.h"
 
 int main()
 {
-   Array testarr;
-   testarr= initialize_array(10);
-   assert(testarr.csize==0 && testarr.tsize== 10);
+    Array_dyn *test;
 
-   //insert data in array
-   testarr=insert_data(testarr,10);
-   testarr=insert_data(testarr,20);
-   testarr=insert_data(testarr,30);
-   testarr=insert_data(testarr,40);
-   testarr=insert_data(testarr,50);
-   testarr=insert_data(testarr,60);
-   testarr=insert_data(testarr,70);
-   testarr=insert_data(testarr,80);
-   testarr=insert_data(testarr,90);
-   testarr=insert_data(testarr,100);
-   assert(testarr.csize==10);
-   assert(testarr.array[3]==40);
+    test = initialize_array(7);
+    assert(test != NULL);
+    assert(test->csize == 0 && test->tsize == 7);
+    assert(test->arr != NULL);
 
-  //search array
-    assert(search_data(testarr,20));
-    assert(search_data(testarr,70));
-    assert(search_data(testarr,80));
+    assert(insert_data(test, 10));
+    assert(insert_data(test, 20));
+    assert(insert_data(test, 30));
+    assert(insert_data(test, 40));
+    assert(insert_data(test, 50));
+    assert(insert_data(test, 60));
+    assert(insert_data(test, 70) == SUCCESS);
+
+    assert(test->csize == test->tsize);
+
+    assert(insert_data(test, 80) == ARRAY_FULL);
+
+    assert(search_data(test, 50));
+    assert(search_data(test, 70));
+    assert(search_data(test, 10));
+    //assert(search_data(test, 90) == NOT_FOUND);
+
+
     return 0;
+
 }
