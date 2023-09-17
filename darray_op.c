@@ -1,5 +1,7 @@
 #include<stdlib.h>
+#include<assert.h>
 #include"darray.h"
+
 
 //initialize dynamic array
 Array_dyn* initialize_array(int size)
@@ -57,4 +59,35 @@ Array_dyn * intersection(Array_dyn *arr_a, Array_dyn *arr_b)
     }
     return arr_c;
 }
+int is_palindrome(Array_dyn *dynarr)
+{
+    int i=0,j=dynarr->csize-1;
+    while(i<j)
+        if(dynarr->arr[i++]!=dynarr->arr[j--])
+        return 0;
+    return 1;
+}
+int bubble_sort(Array_dyn *dynarr)
+{
+    int i,j,temp,flag;
+    if(dynarr->csize<=1)
+        return 0;
+    for(i=0;i<dynarr->csize;i++)
+    {
+        flag =0;
+        for(j=0;j<dynarr->csize-i-1;j++)
+        {
+            temp=dynarr->arr[j];
+            dynarr->arr[j]=dynarr->arr[j+1];
+            dynarr->arr[j+1]=temp;
+            flag=1;
+        }
+        if(flag==0)
+            return 1;
+    }
+    return 1;
+}
+
+
+
 
