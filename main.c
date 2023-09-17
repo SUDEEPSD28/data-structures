@@ -29,6 +29,10 @@ int main()
     assert(search_data(test, 10));
     //assert(search_data(test, 90) == NOT_FOUND);
 
+     assert(is_palindrome(test) == 0);
+
+   assert(bubble_sort(test));
+
 
     return 0;
 
