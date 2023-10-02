@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include<string.h>
 #include<assert.h>
-#include"header.h"
+#include"assignment2.h"
 
 
 
