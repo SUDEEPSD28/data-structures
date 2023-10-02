@@ -1,39 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h>
 #include<assert.h>
-#include "darray.h"
+#include"header.h"
+
+
 
 int main()
 {
-    Array_dyn *test;
+List *test;
+test=initialize();
+assert(test->head = test->tail == 0);
+assert (test->count == 0);
 
-    test = initialize_array(7);
-    assert(test != NULL);
-    assert(test->csize == 0 && test->tsize == 7);
-    assert(test->arr != NULL);
+assert(insert(test,"abc",1,30,"03/08/2023",9.5));
+assert(insert(test,"def",2,20,"04/08/2023",10));
+assert(insert(test,"ghi",3,33,"05/08/2023",10.30));
+assert(insert(test,"jkl",4,28,"06/08/2023",11));
+assert(insert(test,"mno",5,34,"07/08/2023",11.30));
+assert(insert(test,"pqr",6,30,"08/08/2023",9.5));
 
-    assert(insert_data(test, 10));
-    assert(insert_data(test, 20));
-    assert(insert_data(test, 30));
-    assert(insert_data(test, 40));
-    assert(insert_data(test, 50));
-    assert(insert_data(test, 60));
-    assert(insert_data(test, 70) == SUCCESS);
+assert(test->count==6);
+assert(test->insert_count==6);
+assert(test->delete_count==NULL);
 
-    assert(test->csize == test->tsize);
+assert(delete(test,"03/08/2023",10.5));
+assert(delete(test,"04/08/2023",12));
 
-    assert(insert_data(test, 80) == ARRAY_FULL);
+assert(test->count==4);
+assert(test->insert_count==6);
+assert(test->delete_count==2);
 
-    assert(search_data(test, 50));
-    assert(search_data(test, 70));
-    assert(search_data(test, 10));
-    //assert(search_data(test, 90) == NOT_FOUND);
-
-     assert(is_palindrome(test) == 0);
-
-   assert(bubble_sort(test));
-
-
-    return 0;
-
+search(test,1);
+search(test,7);
 }
